@@ -1503,12 +1503,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PulfrichTrenza
   prefabPelota: {fileID: 8640998342490877455, guid: 2a821555f52abf241842051594b0be02, type: 3}
-  paresDePelotas: 25
+  paresDePelotas: 20
   alturaColumna: 3
   velocidadSubida: 0
   amplitudOnda: 0.5
-  frecuenciaOnda: 3
-  velocidadOnda: 2.5
+  frecuenciaOnda: 4
+  velocidadOnda: 2
 --- !u!1 &1111451949
 GameObject:
   m_ObjectHideFlags: 0

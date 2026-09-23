@@ -10,19 +10,39 @@ public class PulfrichController : MonoBehaviour
     public float darknessLevel = 0.8f;      //1 negro total, 0 transparente
     public float eye;
 
-    void Update()
+    private bool estaActivo;
+
+
+    void Start()
     {
         if (pulfrichMaterial != null)
         {
-            // Actualizamos la variable del shader en cada frame
+            // Ponemos como valor init darknessLevel
             pulfrichMaterial.SetFloat("_Darkness", darknessLevel);
         }
+        estaActivo = true;
+    }
+    void Update()
+    {
 
+        if (pulfrichMaterial != null)
+        {
+            if(estaActivo)
+            {
+                // Ponemos como valor init darknessLevel
+                pulfrichMaterial.SetFloat("_Darkness", darknessLevel);
+            } 
+            else
+                // Ponemos como valor init darknessLevel
+                pulfrichMaterial.SetFloat("_Darkness", 0f);
+
+        }
         // Al pulsar 1, activamos el One Minus (Quad en el ojo izquierdo)
         if (Keyboard.current.digit1Key.wasPressedThisFrame)   //(Input.GetKeyDown(KeyCode.Alpha1)) antiguo sistema input
         {
             eye=1;
             pulfrichMaterial.SetFloat("_EyeSide", eye);         // Pulso 1 y eye a 1, eyeIndex + Minus, ojo L
+            estaActivo = true;
         }
 
         // Al pulsar 2, usamos la ruta directa (Quad en el ojo derecho)
@@ -30,8 +50,13 @@ public class PulfrichController : MonoBehaviour
         {
             eye=0;
             pulfrichMaterial.SetFloat("_EyeSide", eye);         // Pulso 2 y eye a 0, eyeIndex directo, ojo R
+            estaActivo = true;
         }
 
+        if(Keyboard.current.digit0Key.wasPressedThisFrame)
+        {
+            estaActivo = false;
+        }
 
     }
 }

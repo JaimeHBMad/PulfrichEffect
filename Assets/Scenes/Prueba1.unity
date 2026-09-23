@@ -1468,6 +1468,7 @@ GameObject:
   m_Component:
   - component: {fileID: 936521145}
   - component: {fileID: 936521146}
+  - component: {fileID: 936521147}
   m_Layer: 0
   m_Name: PulfrichDots
   m_TagString: Untagged
@@ -1497,7 +1498,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 936521143}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fd2e8f6b593c5a5409d4851a7d7caa89, type: 3}
   m_Name: 
@@ -1506,6 +1507,24 @@ MonoBehaviour:
   paresDePelotas: 25
   alturaColumna: 3
   velocidadSubida: 0
+  amplitudOnda: 0.5
+  frecuenciaOnda: 3
+  velocidadOnda: 2.5
+--- !u!114 &936521147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 936521143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c9056b79e0464f4582127c4e50589a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PulfrichTrenzaSimple
+  prefabPelota: {fileID: 8640998342490877455, guid: 2a821555f52abf241842051594b0be02, type: 3}
+  paresDePelotas: 25
+  alturaColumna: 3
   amplitudOnda: 0.5
   frecuenciaOnda: 3
   velocidadOnda: 2.5
@@ -1855,7 +1874,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1352198586
 Transform:
   m_ObjectHideFlags: 0
@@ -2026,7 +2045,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1678937903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2154,7 +2173,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1787607311
 MonoBehaviour:
   m_ObjectHideFlags: 0

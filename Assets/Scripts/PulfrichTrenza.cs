@@ -6,7 +6,7 @@ public class PulfrichTrenza : MonoBehaviour
     public GameObject prefabPelota;
     
     [Header("Parámetros de las Ondas")]
-    public int paresDePelotas = 20; 
+    public int paresDePelotas = 20;             
     public float alturaColumna = 5f;
     public float velocidadSubida = 1.0f;
     public float amplitudOnda = 0.5f; 
@@ -51,7 +51,7 @@ public class PulfrichTrenza : MonoBehaviour
                                                         // diviones entre la altura y cogemos el resto
 
             // 4. Fases calculadas sobre el Y infinito (sin saltos)
-            float fase1 = (yLogico * frecuenciaOnda) - tiempoAnimacion;
+            float fase1 = (yLogico * frecuenciaOnda) + tiempoAnimacion;
             float fase2 = fase1 + Mathf.PI; // Desfase de 180 grados
 
             // 5. Aplicar posiciones 2D

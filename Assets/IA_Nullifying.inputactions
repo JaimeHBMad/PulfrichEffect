@@ -1,0 +1,68 @@
+{
+    "version": 1,
+    "name": "IA_Nullifying",
+    "maps": [
+        {
+            "name": "User",
+            "id": "16295920-83de-4b78-9f6c-35dc60b7d5e1",
+            "actions": [
+                {
+                    "name": "AjustarProfundidad",
+                    "type": "Value",
+                    "id": "64773496-f440-44bd-8e91-a5dc5fc81bf7",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "05845824-409a-4733-90dc-f5149e85fee2",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AjustarProfundidad",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "73eac331-5b49-4936-8cfa-ce586233a6e4",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AjustarProfundidad",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "82998c54-56ff-49ea-a85d-2922f6da9673",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AjustarProfundidad",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "236270c8-c057-4066-9350-23a9864b0f76",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AjustarProfundidad",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

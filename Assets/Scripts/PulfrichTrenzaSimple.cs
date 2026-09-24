@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem; // Para ajustar depth
 
 public class PulfrichTrenzaSimple : MonoBehaviour
 {
@@ -17,6 +18,18 @@ public class PulfrichTrenzaSimple : MonoBehaviour
     private Transform[] hebra1;
     private Transform[] hebra2;
     private float[] posicionesY; 
+
+
+    [Header("Anulación Pulfrich (Profundidad)")]
+    [Tooltip("Ajusta este valor para contrarrestar la ilusión de profundidad. Valores positivos o negativos simulan movimiento en Z.")]
+    [Range(-2f, 2f)]
+    public float compensacionProfundidad = 0f; // <--- NUEVA VARIABLE
+    [Tooltip("Cantidad exacta que suma o resta cada pulsación.")]
+    public float pasoAjusteProfundidad = 0.1f; // NUEVO: Controla el tamaño del escalón
+
+    [Header("Input (Nuevo Sistema)")]
+    [Tooltip("Asigna aquí tu Input Action llamado 'AjustarProfundidad'.")]
+    public InputActionReference accionAjustarProfundidad; // Referencia al Input Action Asset
 
     void Start()
     {
@@ -54,9 +67,44 @@ public class PulfrichTrenzaSimple : MonoBehaviour
         }
     }
 
+    // --- NUEVO: Habilitar y deshabilitar el Input (nuevo system)---
+    private void OnEnable()
+    {
+        if (accionAjustarProfundidad != null)
+        {
+            // Suscribirse al evento cuando la tecla se pulsa
+            accionAjustarProfundidad.action.performed += OnAjustarProfundidad;
+            accionAjustarProfundidad.action.Enable();
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (accionAjustarProfundidad != null)
+        {
+            // Desuscribirse del evento al desactivar el script
+            accionAjustarProfundidad.action.performed -= OnAjustarProfundidad;
+            accionAjustarProfundidad.action.Disable();
+        }
+    }
+
+    // --- NUEVO: Lógica que se ejecuta al pulsar las flechas ---
+    private void OnAjustarProfundidad(InputAction.CallbackContext context)
+    {
+        // context.ReadValue<float>() devolverá 1 (Positive/Up) o -1 (Negative/Down)
+        float direccion = context.ReadValue<float>(); 
+
+        // Si es 1 (Arriba), suma el paso. Si es -1 (Abajo), resta el paso.
+        compensacionProfundidad += (direccion * pasoAjusteProfundidad);
+
+        // Limitamos el valor
+        compensacionProfundidad = Mathf.Clamp(compensacionProfundidad, -2f, 2f);
+    }
+
     void Update()
     {
         float tiempoAnimacion = Time.time * velocidadOnda;
+
 
         for (int i = 0; i < paresDePelotas; i++)
         {
@@ -65,12 +113,21 @@ public class PulfrichTrenzaSimple : MonoBehaviour
             float fase1 = (yFijo * frecuenciaOnda) - tiempoAnimacion;
             float fase2 = fase1 + Mathf.PI; 
 
+            // NUEVO: Calculamos una compensación en profundidad (Z) usando coseno
+            // El coseno está desfasado 90 grados del seno, creando un movimiento circular/elíptico.
+            // Al ajustar 'compensacionProfundidad', introducimos rotación física real opuesta a la ilusión.
+
             float x1 = Mathf.Sin(fase1) * amplitudOnda;
-            hebra1[i].localPosition = new Vector3(x1, yFijo, -0.001f);
+            float z1 = Mathf.Cos(fase1) * compensacionProfundidad;
+            hebra1[i].localPosition = new Vector3(x1, yFijo, z1 -0.001f);
+            
 
             float x2 = Mathf.Sin(fase2) * amplitudOnda;
-            hebra2[i].localPosition = new Vector3(x2, yFijo, 0.001f);
+            float z2 = Mathf.Cos(fase2) * compensacionProfundidad;
+            hebra2[i].localPosition = new Vector3(x2, yFijo, z2 + 0.001f);
         }
+
+
     }
 }
 

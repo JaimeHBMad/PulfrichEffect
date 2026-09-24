@@ -169,7 +169,6 @@ Es igual que `PulfrichTrenza`, pero **las pelotas no suben**. Cada pareja tiene 
 Extras:
 - Crea dos GameObjects contenedores, **`Hebra 1`** y **`Hebra 2`**, como hijos del objeto (`SetParent(..., false)` para que empiecen en `(0,0,0)` local), y mete dentro las pelotas con nombres `Pelota_1`, `Pelota_2`, etc. Así la jerarquía queda ordenada y se puede, por ejemplo, poner un material distinto a cada hebra.
 - Guarda las alturas en `posicionesY[]` para no recalcularlas.
-
 ---
 
 ### `CarMovement.cs` — Movimiento lineal en bucle

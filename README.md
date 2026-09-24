@@ -6,7 +6,7 @@ Pruebas del efecto Pulfrich en VR (Unity HDRP + Varjo). Se oscurece un solo ojo,
 
 ## Shader
 
-**Pulfrich**: Shader que se coloca en un Quad como hijo y delante de la camara y oscurece solo una de las pantallas de las gafas. Este shader se basa en el nodo `Eye Index` (0 = ojo izquierdo, 1 = ojo derecho) para saber que ojo esta pintando el buffer.
+**Pulfrich**: Shader que se coloca en un Quad como hijo y delante de la camara y oscurece solo una de las pantallas de las gafas. Este shader se basa en el nodo _Eye Index_ (0 = ojo izquierdo, 1 = ojo derecho) para saber que ojo esta pintando el buffer.
 
 - `_Darkness`: Variable que controla cuanto se oscurece (0 = nada, 1 = negro).
 - `_EyeSide`: Variable que determina que ojo se oscurece (0 = derecho, 1 = izquierdo).

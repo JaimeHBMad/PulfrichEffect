@@ -1,4 +1,4 @@
-# TestJaime_HDRP
+# Pulfrich Effect en VR
 
 Pruebas del efecto Pulfrich en VR (Unity HDRP + Varjo). Se oscurece un solo ojo, de tal forma que da lugar a un desfase temporal interocular haciendo que los objetos que se mueven de lado parecen tener profundidad.
 

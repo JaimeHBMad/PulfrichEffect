@@ -22,7 +22,10 @@ Pruebas del efecto Pulfrich en VR (Unity HDRP + Varjo). Se oscurece un solo ojo,
 
 **GlobalVolumeBehave**: con `Espacio` activa o desactiva el post-procesado (Global Volume).
 
+Esquema del efecto Pulfrich en movimiento de izquierda a derecha, donde el objeto se percibe más lejos de su trayectoria real
 <img width="1220" height="612" alt="Captura de pantalla 2026-09-25 115526" src="https://github.com/user-attachments/assets/65ddde01-cfdc-4248-be55-3ebc292d8d27" />
+Esquema del efecto Pulfrich en movimiento de derecha a izquierda, donde el objeto se percibe más cerca de su trayectoria real
 <img width="1223" height="607" alt="Captura de pantalla 2026-09-25 115536" src="https://github.com/user-attachments/assets/ac28de6f-c2a8-4286-80fb-7b888e3f00de" />
+Trayectoria elíptica ilusoria generada por el efecto Pulfrich con un movimiento rectilineo.
 <img width="1226" height="647" alt="Captura de pantalla 2026-09-25 115542" src="https://github.com/user-attachments/assets/7be031e2-b707-4c5b-9ec3-19182de5f644" />
 

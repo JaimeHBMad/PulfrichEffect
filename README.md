@@ -24,8 +24,8 @@ Pruebas del efecto Pulfrich en VR (Unity HDRP + Varjo). Se oscurece un solo ojo,
 
 A continuación adjunto 3 figuras que explican visualmente la ilusión que se crea con el efecto Pulfrich.
 <img width="1220" height="612" alt="Captura de pantalla 2026-09-25 115526" src="https://github.com/user-attachments/assets/65ddde01-cfdc-4248-be55-3ebc292d8d27" />
-_Esquema del efecto Pulfrich en movimiento de izquierda a derecha, donde el objeto se percibe más lejos de su trayectoria real_
+_Figura 1: Esquema del efecto Pulfrich en movimiento de izquierda a derecha, donde el objeto se percibe más lejos de su trayectoria real_
 <img width="1223" height="607" alt="Captura de pantalla 2026-09-25 115536" src="https://github.com/user-attachments/assets/ac28de6f-c2a8-4286-80fb-7b888e3f00de" />
-_Esquema del efecto Pulfrich en movimiento de derecha a izquierda, donde el objeto se percibe más cerca de su trayectoria real_
+_Figura 2: Esquema del efecto Pulfrich en movimiento de derecha a izquierda, donde el objeto se percibe más cerca de su trayectoria real_
 <img width="1226" height="647" alt="Captura de pantalla 2026-09-25 115542" src="https://github.com/user-attachments/assets/7be031e2-b707-4c5b-9ec3-19182de5f644" />
-_Trayectoria elíptica ilusoria generada por el efecto Pulfrich con un movimiento rectilineo._
+_Figura 3: Trayectoria elíptica ilusoria generada por el efecto Pulfrich con un movimiento rectilineo._

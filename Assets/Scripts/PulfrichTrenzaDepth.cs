@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem; // Para ajustar depth
 
-public class PulfrichTrenzaSimple : MonoBehaviour
+public class PulfrichTrenzaDepth : MonoBehaviour
 {
     [Header("Configuración Principal")]
     public GameObject prefabPelota;
@@ -66,39 +66,75 @@ public class PulfrichTrenzaSimple : MonoBehaviour
             hebra2[i].localPosition = new Vector3(0, espaciado, 0.001f);
         }
     }
+    //Todo esto replaced con el playerinput
+    // // --- NUEVO: Habilitar y deshabilitar el Input (nuevo system)---
+    // private void OnEnable()
+    // {
+    //     if (accionAjustarProfundidad != null)
+    //     {
+    //         // Suscribirse al evento cuando la tecla se pulsa
+    //         accionAjustarProfundidad.action.performed += OnAjustarProfundidad;
+    //         accionAjustarProfundidad.action.Enable();
+    //     }
+    // }
 
-    // --- NUEVO: Habilitar y deshabilitar el Input (nuevo system)---
-    private void OnEnable()
+    // private void OnDisable()
+    // {
+    //     if (accionAjustarProfundidad != null)
+    //     {
+    //         // Desuscribirse del evento al desactivar el script
+    //         accionAjustarProfundidad.action.performed -= OnAjustarProfundidad;
+    //         accionAjustarProfundidad.action.Disable();
+    //     }
+    // }
+
+    // // --- NUEVO: Lógica que se ejecuta al pulsar las flechas ---
+    // private void OnAjustarProfundidad(InputAction.CallbackContext context)
+    // {
+    //     // context.ReadValue<float>() devolverá 1 (Positive/Up) o -1 (Negative/Down)
+    //     float direccion = context.ReadValue<float>(); 
+
+    //     // Si es 1 (Arriba), suma el paso. Si es -1 (Abajo), resta el paso.
+    //     compensacionProfundidad += (direccion * pasoAjusteProfundidad);
+
+    //     // Limitamos el valor
+    //     Mathf.Clamp(compensacionProfundidad, -2f, 2f); //rounded para redondear a dos decimales
+    // }
+
+    public void AcercandoseBigL(InputAction.CallbackContext cntxt)
     {
-        if (accionAjustarProfundidad != null)
+        if (cntxt.performed)
         {
-            // Suscribirse al evento cuando la tecla se pulsa
-            accionAjustarProfundidad.action.performed += OnAjustarProfundidad;
-            accionAjustarProfundidad.action.Enable();
+            Debug.Log("Estas acercando izquierda");
+            compensacionProfundidad += pasoAjusteProfundidad;
         }
     }
 
-    private void OnDisable()
+    public void AcercandoseBigR(InputAction.CallbackContext cntxt)
     {
-        if (accionAjustarProfundidad != null)
+        if (cntxt.performed)
         {
-            // Desuscribirse del evento al desactivar el script
-            accionAjustarProfundidad.action.performed -= OnAjustarProfundidad;
-            accionAjustarProfundidad.action.Disable();
+            Debug.Log("Estas acercando derecha");
+            compensacionProfundidad -= pasoAjusteProfundidad;
         }
     }
 
-    // --- NUEVO: Lógica que se ejecuta al pulsar las flechas ---
-    private void OnAjustarProfundidad(InputAction.CallbackContext context)
+    public void AcercandoseSmallL(InputAction.CallbackContext cntxt)
     {
-        // context.ReadValue<float>() devolverá 1 (Positive/Up) o -1 (Negative/Down)
-        float direccion = context.ReadValue<float>(); 
+        if (cntxt.performed)
+        {
+            Debug.Log("Estas acercando izquierda");
+            compensacionProfundidad += pasoAjusteProfundidad/10;
+        }
+    }
 
-        // Si es 1 (Arriba), suma el paso. Si es -1 (Abajo), resta el paso.
-        compensacionProfundidad += (direccion * pasoAjusteProfundidad);
-
-        // Limitamos el valor
-        Mathf.Clamp(compensacionProfundidad, -2f, 2f); //rounded para redondear a dos decimales
+    public void AcercandoseSmallR(InputAction.CallbackContext cntxt)
+    {
+        if (cntxt.performed)
+        {
+            Debug.Log("Estas acercando derecha");
+            compensacionProfundidad -= pasoAjusteProfundidad/10;
+        }
     }
 
     void Update()

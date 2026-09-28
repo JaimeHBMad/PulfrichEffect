@@ -14,20 +14,45 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "nearL",
+                    "type": "Button",
+                    "id": "e25117d3-df9c-4915-81a9-1df5995c1123",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "nearR",
+                    "type": "Button",
+                    "id": "750f7bd1-be23-4300-a80f-1c07f1a160ea",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "nearLsmall",
+                    "type": "Button",
+                    "id": "5a4c24cc-2b19-4bbb-8ff1-2cf94b33b707",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "nearRsmall",
+                    "type": "Button",
+                    "id": "49de8df2-6a00-4702-9a03-c3d4d65c37e3",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "05845824-409a-4733-90dc-f5149e85fee2",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "AjustarProfundidad",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "1D Axis",
                     "id": "73eac331-5b49-4936-8cfa-ce586233a6e4",
@@ -60,6 +85,50 @@
                     "action": "AjustarProfundidad",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "94469bc5-8b3b-4a95-8a50-31dde346096d",
+                    "path": "<Keyboard>/numpad6",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "nearR",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ffe7afba-c3f8-4278-a182-2a0247492d08",
+                    "path": "<Keyboard>/numpad4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "nearL",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a46c9a7e-3220-43aa-aba0-f361e9c1520e",
+                    "path": "<Keyboard>/numpad1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "nearLsmall",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "580e8c11-10bd-40f6-859c-c5851b3c0455",
+                    "path": "<Keyboard>/numpad3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "nearRsmall",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

@@ -12,7 +12,6 @@ public class PulfrichController : MonoBehaviour
 
     private bool estaActivo;
 
-
     void Start()
     {
         if (pulfrichMaterial != null)

@@ -294,3 +294,26 @@ MonoBehaviour:
   - {fileID: -7657671921215853901}
   - {fileID: -4984760116892953116}
   - {fileID: -4552262429858352771}
+  - {fileID: 3940261350614570364}
+--- !u!114 &3940261350614570364
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e37d7681c15f044c93820e2a7531220, type: 3}
+  m_Name: OneEyeBlur
+  m_EditorClassIdentifier: Assembly-CSharp::OneEyeBlur
+  active: 0
+  ojoIzquierdo:
+    m_OverrideState: 1
+    m_Value: 1
+  ojoDerecho:
+    m_OverrideState: 0
+    m_Value: 0
+  radio:
+    m_OverrideState: 1
+    m_Value: 0.0344

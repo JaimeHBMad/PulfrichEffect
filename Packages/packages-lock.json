@@ -288,16 +288,6 @@
       },
       "url": "https://packages.unity.com"
     },
-    "com.varjo.xr": {
-      "version": "https://github.com/varjocom/VarjoUnityXRPlugin.git",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {
-        "com.unity.xr.management": "4.4.0",
-        "com.unity.xr.arfoundation": "5.1.3"
-      },
-      "hash": "d074462f6c99b8e8bc6d83037457973496cb47d9"
-    },
     "com.unity.modules.accessibility": {
       "version": "1.0.0",
       "depth": 0,

@@ -7,7 +7,7 @@ public class PulfrichController : MonoBehaviour
     public Material pulfrichMaterial;
     
     [Range(0f, 1f)]             // control desde Unity
-    public float darknessLevel = 0.8f;      //1 negro total, 0 transparente
+    public float transmitancia = 0.8f;      //1 negro total, 0 transparente
     public float eye;
 
     private bool estaActivo;
@@ -16,8 +16,8 @@ public class PulfrichController : MonoBehaviour
     {
         if (pulfrichMaterial != null)
         {
-            // Ponemos como valor init darknessLevel
-            pulfrichMaterial.SetFloat("_Darkness", darknessLevel);
+            // Ponemos como valor init transmitancia
+            pulfrichMaterial.SetFloat("_Transmitancia", transmitancia);
         }
         estaActivo = true;
     }
@@ -28,12 +28,12 @@ public class PulfrichController : MonoBehaviour
         {
             if(estaActivo)
             {
-                // Ponemos como valor init darknessLevel
-                pulfrichMaterial.SetFloat("_Darkness", darknessLevel);
+                // Ponemos como valor init transmitancia
+                pulfrichMaterial.SetFloat("_Transmitancia", transmitancia);
             } 
             else
-                // Ponemos como valor init darknessLevel
-                pulfrichMaterial.SetFloat("_Darkness", 0f);
+                // Ponemos como valor init transmitancia
+                pulfrichMaterial.SetFloat("_Transmitancia", 0f);
 
         }
         // Al pulsar 1, activamos el One Minus (Quad en el ojo izquierdo)
@@ -57,6 +57,11 @@ public class PulfrichController : MonoBehaviour
             estaActivo = false;
         }
 
+    }
+
+    void OnValidate()
+    {
+        pulfrichMaterial.SetFloat("_Transmitancia", transmitancia);
     }
 }
 

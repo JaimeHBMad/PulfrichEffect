@@ -310,10 +310,10 @@ MonoBehaviour:
   active: 0
   ojoIzquierdo:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.503
   ojoDerecho:
     m_OverrideState: 0
-    m_Value: 0
+    m_Value: 0.497
   radio:
     m_OverrideState: 1
-    m_Value: 0.0344
+    m_Value: 0.0259

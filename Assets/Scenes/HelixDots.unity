@@ -2915,7 +2915,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PulfrichController
   pulfrichMaterial: {fileID: -876546973899608171, guid: 5b85e5dcca6b0a44aa9fde1d982ca00a, type: 3}
-  transmitancia: 0.492
+  transmitancia: 0.684
   eye: 0
 --- !u!23 &1859744563
 MeshRenderer:

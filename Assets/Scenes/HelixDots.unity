@@ -1227,6 +1227,87 @@ MonoBehaviour:
   prioridad: 100
   atajosTeclado: 1
   pasoIntensidad: 0.1
+--- !u!1 &695848932
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 695848936}
+  - component: {fileID: 695848935}
+  - component: {fileID: 695848933}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &695848933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695848932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8add6a146b39b444a81e25927e5d07d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PulfrichTrenzaDepthNew
+  prefabPelota: {fileID: 8640998342490877455, guid: 2a821555f52abf241842051594b0be02, type: 3}
+  paresDePelotas: 20
+  alturaColumna: 5
+  amplitudOnda: 0.5
+  frecuenciaOnda: 3
+  velocidadOnda: 2
+  compensacionProfundidad: 0
+  pasoAjusteProfundidad: 0.1
+  limiteCompensacion: 2
+  permitirAjuste: 1
+--- !u!114 &695848935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695848932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13772aa88fbf58b4780f811780ef163e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PruebaPulfrich
+  controladorFiltro: {fileID: 1859744565}
+  trenza: {fileID: 695848933}
+  densidadesOpticas:
+  - -0.2
+  - 0
+  - 0.2
+  compensacionesZ:
+  - 0
+  repeticionesPorCombinacion: 1
+  totalEnsayos: 3
+  aleatorizarOrden: 1
+  empezarAlArrancar: 1
+  pausaEntreEnsayos: 1.5
+  idParticipante: P01
+--- !u!4 &695848936
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695848932}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &716202349
 GameObject:
   m_ObjectHideFlags: 0
@@ -1696,8 +1777,8 @@ MonoBehaviour:
     m_ActionName: 'User/AjustarProfundidad[/Keyboard/downArrow,/Keyboard/upArrow]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 936521149}
-        m_TargetAssemblyTypeName: PulfrichTrenzaDepth, Assembly-CSharp
+      - m_Target: {fileID: 695848933}
+        m_TargetAssemblyTypeName: PulfrichTrenzaDepthNew, Assembly-CSharp
         m_MethodName: AcercandoseBigL
         m_Mode: 0
         m_Arguments:
@@ -1712,8 +1793,8 @@ MonoBehaviour:
     m_ActionName: 'User/nearL[/Keyboard/upArrow]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 936521149}
-        m_TargetAssemblyTypeName: PulfrichTrenzaDepth, Assembly-CSharp
+      - m_Target: {fileID: 695848933}
+        m_TargetAssemblyTypeName: PulfrichTrenzaDepthNew, Assembly-CSharp
         m_MethodName: AcercandoseBigR
         m_Mode: 0
         m_Arguments:
@@ -1728,8 +1809,8 @@ MonoBehaviour:
     m_ActionName: 'User/nearR[/Keyboard/downArrow]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 936521149}
-        m_TargetAssemblyTypeName: PulfrichTrenzaDepth, Assembly-CSharp
+      - m_Target: {fileID: 695848933}
+        m_TargetAssemblyTypeName: PulfrichTrenzaDepthNew, Assembly-CSharp
         m_MethodName: AcercandoseSmallL
         m_Mode: 0
         m_Arguments:
@@ -1744,8 +1825,8 @@ MonoBehaviour:
     m_ActionName: 'User/nearLsmall[/Keyboard/numpad1]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 936521149}
-        m_TargetAssemblyTypeName: PulfrichTrenzaDepth, Assembly-CSharp
+      - m_Target: {fileID: 695848933}
+        m_TargetAssemblyTypeName: PulfrichTrenzaDepthNew, Assembly-CSharp
         m_MethodName: AcercandoseSmallR
         m_Mode: 0
         m_Arguments:
@@ -1758,6 +1839,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 49de8df2-6a00-4702-9a03-c3d4d65c37e3
     m_ActionName: 'User/nearRsmall[/Keyboard/numpad3]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 695848935}
+        m_TargetAssemblyTypeName: PruebaPulfrich, Assembly-CSharp
+        m_MethodName: Confirmar
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 6837bbf4-d357-424e-95e9-1bf73feac726
+    m_ActionName: 'User/Confirmar[/Keyboard/enter]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: User
@@ -1770,7 +1867,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 936521143}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ba829bd2f5682c4cb5b5ed5a9fb72e8, type: 3}
   m_Name: 
@@ -1783,7 +1880,6 @@ MonoBehaviour:
   velocidadOnda: 2.5
   compensacionProfundidad: 0
   pasoAjusteProfundidad: 0.1
-  accionAjustarProfundidad: {fileID: 0}
 --- !u!1 &1111451949
 GameObject:
   m_ObjectHideFlags: 0
@@ -2880,6 +2976,7 @@ GameObject:
   - component: {fileID: 1859744564}
   - component: {fileID: 1859744563}
   - component: {fileID: 1859744561}
+  - component: {fileID: 1859744565}
   m_Layer: 0
   m_Name: Quad
   m_TagString: Untagged
@@ -2909,7 +3006,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1859744559}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a38c0493dca7f8e42bfa6a2a681afd31, type: 3}
   m_Name: 
@@ -2974,6 +3071,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1859744559}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1859744565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1859744559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 679a009b959bc1742be2ee7032a1b01d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PulfrichControllerNew
+  pulfrichMaterial: {fileID: -876546973899608171, guid: 5b85e5dcca6b0a44aa9fde1d982ca00a, type: 3}
+  transmitancia: 0.5
+  eye: 1
+  controlPorTeclado: 0
 --- !u!1 &1937702179
 GameObject:
   m_ObjectHideFlags: 0
@@ -3605,3 +3718,4 @@ SceneRoots:
   - {fileID: 1937702180}
   - {fileID: 2140627613}
   - {fileID: 1941656002}
+  - {fileID: 695848936}

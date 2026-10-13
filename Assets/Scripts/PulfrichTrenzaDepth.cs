@@ -27,9 +27,9 @@ public class PulfrichTrenzaDepth : MonoBehaviour
     [Tooltip("Cantidad exacta que suma o resta cada pulsación.")]
     public float pasoAjusteProfundidad = 0.1f; // NUEVO: Controla el tamaño del escalón
 
-    [Header("Input (Nuevo Sistema)")]
-    [Tooltip("Asigna aquí tu Input Action llamado 'AjustarProfundidad'.")]
-    public InputActionReference accionAjustarProfundidad; // Referencia al Input Action Asset
+    //[Header("Input (Nuevo Sistema)")]
+    //[Tooltip("Asigna aquí tu Input Action llamado 'AjustarProfundidad'.")]
+    //public InputActionReference accionAjustarProfundidad; // Referencia al Input Action Asset
 
     void Start()
     {

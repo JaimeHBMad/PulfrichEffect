@@ -72,24 +72,23 @@ public class PulfrichTrenzaDepthNew : MonoBehaviour
 
     // ---------- API para la prueba ----------
 
-    public void EstablecerCompensacion(float valor)
+    public void EstablecerCompensacion(float valor)             // para compensar al prinicpio de cada repeticion, y con el teclado
     {
-        valor = Mathf.Clamp(valor, -limiteCompensacion, limiteCompensacion);
-        // Redondeo a 4 decimales para no arrastrar error de coma flotante al sumar pasos
-        compensacionProfundidad = Mathf.Round(valor * 10000f) / 10000f;
+        valor = Mathf.Clamp(valor, -limiteCompensacion, limiteCompensacion);        // limita el valor entre los limites
+        compensacionProfundidad = Mathf.Round(valor * 10000f) / 10000f;             // redondeo a 4 decimales para no arrastrar error de coma flotante al sumar pasos
     }
 
     public void MostrarPelotas(bool visible)
     {
-        if (contenedorHebra1 != null) contenedorHebra1.SetActive(visible);
-        if (contenedorHebra2 != null) contenedorHebra2.SetActive(visible);
+        contenedorHebra1.SetActive(visible);
+        contenedorHebra2.SetActive(visible);
     }
 
     // ---------- Input (PlayerInput → Invoke Unity Events) ----------
 
     public void AcercandoseBigL(InputAction.CallbackContext cntxt)
     {
-        if (cntxt.performed) Ajustar(pasoAjusteProfundidad);
+        if (cntxt.performed) Ajustar(pasoAjusteProfundidad);        // en una linea al ser solo una instruccion
     }
 
     public void AcercandoseBigR(InputAction.CallbackContext cntxt)

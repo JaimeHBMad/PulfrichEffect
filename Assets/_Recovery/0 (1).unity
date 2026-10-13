@@ -1292,7 +1292,7 @@ MonoBehaviour:
   aleatorizarOrden: 1
   empezarAlArrancar: 1
   pausaEntreEnsayos: 1.5
-  idParticipante: P01
+  idParticipante: JNK
 --- !u!4 &695848936
 Transform:
   m_ObjectHideFlags: 0

@@ -29,7 +29,7 @@ public class MovementBars : MonoBehaviour
     [Tooltip("Vueltas completas de la textura por segundo. Positivo = izquierda a derecha.")]
     [SerializeField] float speed = 0.1f;
     [Tooltip("Nombre de la propiedad de textura en el material (HDRP: __UnlitColorMap, URP: _BaseMap, Built-in: _MainTex).")]
-    [SerializeField] string textureProperty = "_BaseMap";
+    [SerializeField] string textureProperty = "_BaseMap";     
 
     Texture2D _texture;
     Renderer _renderer;

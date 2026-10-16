@@ -160,7 +160,8 @@ public class PruebaPulfrich : MonoBehaviour
         controladorFiltro.controlPorTeclado = true;
         enCurso = false;
 
-        Debug.Log("Prueba terminada.");
+        //Debug.Log("Prueba terminada.");
+        Debug.Log($"Prueba terminada. Datos guardados en: {rutaCsv}");
     }
 
     private void GenerarEnsayos()

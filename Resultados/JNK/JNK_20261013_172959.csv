@@ -1,0 +1,4 @@
+﻿participante;repeticion;densidad_optica;ojo_filtro;transmitancia;comp_inicial;comp_final;tiempo_s
+JNK;1;0,2;derecho;0,6310;0;-0,6000;16,903
+JNK;2;-0,2;izquierdo;0,6310;0;0,8000;5,094
+JNK;3;0;ninguno;1,0000;0;-0,0200;3,881

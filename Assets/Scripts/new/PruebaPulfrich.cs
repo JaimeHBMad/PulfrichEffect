@@ -203,9 +203,15 @@ public class PruebaPulfrich : MonoBehaviour
 
         //File.WriteAllText(rutaCsv,
         //    "participante,ensayo,densidad_optica,ojo_filtro,transmitancia,comp_inicial,comp_final,tiempo_s\n");
+        //string cabecera = string.Join(SEPARADOR,
+        //    "participante", "repeticion", "densidad_optica", "ojo_filtro",
+        //    "transmitancia", "comp_inicial", "comp_final", "tiempo_s");
         string cabecera = string.Join(SEPARADOR,
-            "participante", "repeticion", "densidad_optica", "ojo_filtro",
-            "transmitancia", "comp_inicial", "comp_final", "tiempo_s");
+        "participante", "repeticion", "densidad_optica", "ojo_filtro",
+        "transmitancia", "comp_inicial", "comp_final", "tiempo_s",
+        // NUEVO: parámetros de la hélice
+        "pares_pelotas", "altura_columna", "amplitud_onda",
+        "frecuencia_onda", "velocidad_onda", "paso_ajuste");
 
         // UTF-8 con BOM para que Excel lea bien tildes y eñes
         File.WriteAllText(rutaCsv, cabecera + "\n", Encoding.UTF8);
@@ -247,6 +253,8 @@ public class PruebaPulfrich : MonoBehaviour
     {
         string ojo = e.densidad < 0f ? "izquierdo" : (e.densidad > 0f ? "derecho" : "ninguno");
         float transmitancia = PulfrichControllerNew.TransmitanciaDesdeDensidad(e.densidad);         //New
+                                                                                                    
+       // int pares = trenza.paresDePelotas - 2;          // New: pares de pelotas sin contar la pareja en 0 ni la del final (x - 2)
 
         string fila = string.Join(SEPARADOR,
             idParticipante,
@@ -256,7 +264,16 @@ public class PruebaPulfrich : MonoBehaviour
             transmitancia.ToString("F4", formatoNumeros),
             e.compInicial.ToString(formatoNumeros),
             compFinal.ToString("F4", formatoNumeros),
-            tiempo.ToString("F3", formatoNumeros));
+            tiempo.ToString("F3", formatoNumeros),
+            //New variables del estimulo en si
+            //pares.ToString(),
+            trenza.paresDePelotas.ToString(formatoNumeros), // trenza.paresDePelotas - 2 si solo se quiere 1 o pocas porque la 1 y la n estan al prinicpio y al final justo
+            trenza.alturaColumna.ToString(formatoNumeros),
+            trenza.amplitudOnda.ToString(formatoNumeros),
+            trenza.frecuenciaOnda.ToString(formatoNumeros),
+            trenza.velocidadOnda.ToString(formatoNumeros),
+            trenza.pasoAjusteProfundidad.ToString(formatoNumeros));
+            
 
         // Se escribe repetición a repetición para no perder datos si algo falla a mitad
         File.AppendAllText(rutaCsv, fila + "\n", Encoding.UTF8);

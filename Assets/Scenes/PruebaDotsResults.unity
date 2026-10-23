@@ -161,7 +161,7 @@ Transform:
   m_GameObject: {fileID: 131581276}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -8}
+  m_LocalPosition: {x: 0, y: 0, z: -9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -256,7 +256,7 @@ Transform:
   m_GameObject: {fileID: 323358247}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.5}
+  m_LocalPosition: {x: 0, y: 0, z: -0.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1188,7 +1188,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 654394188}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 44203ce6c589ea348af56a3be5623530, type: 3}
   m_Name: 
@@ -1201,7 +1201,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 654394188}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c3901d18b20b4594ba855c554716a894, type: 3}
   m_Name: 
@@ -1259,13 +1259,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PulfrichTrenzaDepthNew
   prefabPelota: {fileID: 8640998342490877455, guid: 2a821555f52abf241842051594b0be02, type: 3}
-  paresDePelotas: 20
+  paresDePelotas: 50
   alturaColumna: 5
   amplitudOnda: 0.5
-  frecuenciaOnda: 3
-  velocidadOnda: 2
+  frecuenciaOnda: 2
+  velocidadOnda: 3
   compensacionProfundidad: 0
-  pasoAjusteProfundidad: 0.1
+  pasoAjusteProfundidad: 0.05
   limiteCompensacion: 2
   permitirAjuste: 1
 --- !u!114 &695848935
@@ -1283,9 +1283,9 @@ MonoBehaviour:
   controladorFiltro: {fileID: 1859744565}
   trenza: {fileID: 695848933}
   densidadesOpticas:
-  - -0.2
+  - -0.6
   - 0
-  - 0.2
+  - 0.6
   compensacionesZ:
   - 0
   repeticionesPorCombinacion: 1
@@ -1293,7 +1293,7 @@ MonoBehaviour:
   aleatorizarOrden: 1
   empezarAlArrancar: 1
   pausaEntreEnsayos: 1.5
-  idParticipante: JNK
+  idParticipante: JHB
 --- !u!4 &695848936
 Transform:
   m_ObjectHideFlags: 0
@@ -1303,7 +1303,7 @@ Transform:
   m_GameObject: {fileID: 695848932}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -7}
+  m_LocalPosition: {x: 0, y: -0.25, z: -5.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1441,7 +1441,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &889719557
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2351,7 +2351,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PulfrichControllerNew
   pulfrichMaterial: {fileID: -876546973899608171, guid: 5b85e5dcca6b0a44aa9fde1d982ca00a, type: 3}
-  transmitancia: 0.531
+  transmitancia: 0.33
   eye: 1
   controlPorTeclado: 0
 --- !u!1660057539 &9223372036854775807

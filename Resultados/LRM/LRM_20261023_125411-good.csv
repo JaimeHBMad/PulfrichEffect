@@ -1,0 +1,4 @@
+﻿participante;repeticion;densidad_optica;ojo_filtro;transmitancia;comp_inicial;comp_final;tiempo_s;pares_pelotas;altura_columna;amplitud_onda;frecuencia_onda;velocidad_onda;paso_ajuste
+LRM;1;-0,6;izquierdo;0,2512;0;0,2750;102,568;102,568;48;5;0,5;2;4;0,05
+LRM;2;0,6;derecho;0,2512;0;-0,3050;49,428;49,428;48;5;0,5;2;4;0,05
+LRM;3;0;ninguno;1,0000;0;-0,0500;20,333;20,333;48;5;0,5;2;4;0,05

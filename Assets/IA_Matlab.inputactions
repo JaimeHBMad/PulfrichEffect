@@ -1,0 +1,95 @@
+{
+    "version": 1,
+    "name": "IA_Matlab",
+    "maps": [
+        {
+            "name": "User",
+            "id": "4dc5268f-3940-4162-885f-bd89d3a2b161",
+            "actions": [
+                {
+                    "name": "BigL",
+                    "type": "Button",
+                    "id": "496b70bb-57c1-4f60-b5d2-a1ab686c4eac",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SmallL",
+                    "type": "Button",
+                    "id": "6395e95a-636a-4832-ab76-79c0812a9c97",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "BigR",
+                    "type": "Button",
+                    "id": "8c7d1410-5b7d-42e2-ba0b-bf4e36aa25fd",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SmallR",
+                    "type": "Button",
+                    "id": "37973f7d-4d04-4719-a4cb-636ae4d5c5ee",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "1ff57fe7-4a05-4633-9978-99ed02d1acc2",
+                    "path": "<XRController>{LeftHand}/{PrimaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "BigL",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1537cfe4-7f0d-4468-96cf-f9e096238d6a",
+                    "path": "<XRController>{LeftHand}/{SecondaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SmallL",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "57190ed9-190e-47f3-bcd1-838130787245",
+                    "path": "<XRController>{RightHand}/{PrimaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "BigR",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ca7d6690-f981-48de-ace6-a9e8474285de",
+                    "path": "<XRController>{RightHand}/{SecondaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SmallR",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

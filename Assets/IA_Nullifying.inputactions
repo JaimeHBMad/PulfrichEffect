@@ -108,8 +108,30 @@
                 },
                 {
                     "name": "",
+                    "id": "810942f4-47a9-4ff3-bc78-101fe1fee9fb",
+                    "path": "<XRController>{RightHand}/{PrimaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "nearR",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "ffe7afba-c3f8-4278-a182-2a0247492d08",
                     "path": "<Keyboard>/numpad4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "nearL",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "268b2b58-1209-42fb-ac82-0ae95a8ea539",
+                    "path": "<XRController>{LeftHand}/{PrimaryButton}",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -130,8 +152,30 @@
                 },
                 {
                     "name": "",
+                    "id": "94944f57-bc57-4e0b-8f07-41b1bd9eb0f0",
+                    "path": "<XRController>{LeftHand}/{SecondaryButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "nearLsmall",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "580e8c11-10bd-40f6-859c-c5851b3c0455",
                     "path": "<Keyboard>/numpad3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "nearRsmall",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "68badd38-2a69-430d-babc-673828c501a8",
+                    "path": "<XRController>{RightHand}/{SecondaryButton}",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -153,5 +197,11 @@
             ]
         }
     ],
-    "controlSchemes": []
+    "controlSchemes": [
+        {
+            "name": "Dots",
+            "bindingGroup": "Dots",
+            "devices": []
+        }
+    ]
 }

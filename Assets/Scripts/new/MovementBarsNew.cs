@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 //using UnityEngine.UI;         //solo haria falta si lo quiero tener en UI 
 
 /// <summary>
@@ -8,7 +9,7 @@ using UnityEngine;
 /// Funciona sobre un Renderer (Quad, Plane...) o sobre un RawImage de UI.
 /// Con el Shader Graph "BarrasPorOjo" (nodo Eye Index) se puede elegir qué ojo ve el objeto.
 /// </summary>
-[ExecuteAlways]
+[ExecuteAlways]     //permite ver en el inspector las barras
 public class MovementBarsNew : MonoBehaviour
 {
     public enum OjoVisible { Ambos, Izquierdo, Derecho }            // enum: nueva variable para decidir que ojo ver x plano
@@ -51,20 +52,21 @@ public class MovementBarsNew : MonoBehaviour
 
     struct Bar { public int x, width, yMin, yMax; }
 
-    void OnEnable()
+    void OnEnable()         // se activa cuando el go se "enciende" (al darle al play)
     {
-        _renderer = GetComponent<Renderer>();
-        //_rawImage = GetComponent<RawImage>();     // UI
-        _mpb = new MaterialPropertyBlock();         // copia del material para que cada objeto pueda tener valores distintos
+        //_renderer = GetComponent<Renderer>();         // todo esto pasado a asegurarreferencias()
+        ////_rawImage = GetComponent<RawImage>();     // UI
+        //_mpb = new MaterialPropertyBlock();         // copia del material para que cada objeto pueda tener valores distintos
+        AsegurarReferencias();
         Generate();
     }
 
-    void OnValidate()
+    void OnValidate()       // hace ver los cambios en el inspector 
     {
         if (isActiveAndEnabled) Generate();
     }
 
-    void OnDisable()
+    void OnDisable()            // se activa cuando se apaga el go 
     {
         if (_texture != null)
         {
@@ -73,9 +75,19 @@ public class MovementBarsNew : MonoBehaviour
         }
     }
 
+    // Crea lo que falte. OnValidate puede ejecutarse antes que OnEnable     // (al abrir la escena o al recompilar), así que no podemos fiarnos de él.
+    //Funcion para asegurar que se crea bien la textura, a veces OnValidate se crea antes que OnEnable y saltaba error 
+    void AsegurarReferencias()
+    {
+        if (_mpb == null) _mpb = new MaterialPropertyBlock();
+        if (_renderer == null) _renderer = GetComponent<Renderer>();
+        //if (_rawImage == null) _rawImage = GetComponent<RawImage>();
+    }
+
     [ContextMenu("Regenerar")]
     public void Generate()
     {
+        AsegurarReferencias();          // se asegura de que mpb exista y si no lo crea
         if (_texture == null || _texture.width != textureWidth || _texture.height != textureHeight)
         {
             _texture = new Texture2D(textureWidth, textureHeight, TextureFormat.RGBA32, false)

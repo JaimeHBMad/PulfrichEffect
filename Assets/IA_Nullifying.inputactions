@@ -197,11 +197,5 @@
             ]
         }
     ],
-    "controlSchemes": [
-        {
-            "name": "Dots",
-            "bindingGroup": "Dots",
-            "devices": []
-        }
-    ]
+    "controlSchemes": []
 }

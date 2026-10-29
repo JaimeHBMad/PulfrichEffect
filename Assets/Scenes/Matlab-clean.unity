@@ -256,7 +256,7 @@ Transform:
   m_GameObject: {fileID: 323358247}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -450,7 +450,7 @@ Transform:
   m_GameObject: {fileID: 359717965}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.75, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1318,7 +1318,9 @@ GameObject:
   - component: {fileID: 654394192}
   - component: {fileID: 654394193}
   - component: {fileID: 654394194}
+  - component: {fileID: 654394197}
   - component: {fileID: 654394195}
+  - component: {fileID: 654394196}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1407,7 +1409,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 654394188}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b9985f225fb41f04983450fcec9288c0, type: 3}
   m_Name: 
@@ -1451,8 +1453,8 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 654394194}
-        m_TargetAssemblyTypeName: MoverObjetosMando, Assembly-CSharp
+      - m_Target: {fileID: 654394197}
+        m_TargetAssemblyTypeName: MoverObjetosMandoNew, Assembly-CSharp
         m_MethodName: BigL
         m_Mode: 0
         m_Arguments:
@@ -1467,8 +1469,8 @@ MonoBehaviour:
     m_ActionName: User/BigL
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 654394194}
-        m_TargetAssemblyTypeName: MoverObjetosMando, Assembly-CSharp
+      - m_Target: {fileID: 654394197}
+        m_TargetAssemblyTypeName: MoverObjetosMandoNew, Assembly-CSharp
         m_MethodName: SmallL
         m_Mode: 0
         m_Arguments:
@@ -1483,8 +1485,8 @@ MonoBehaviour:
     m_ActionName: User/SmallL
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 654394194}
-        m_TargetAssemblyTypeName: MoverObjetosMando, Assembly-CSharp
+      - m_Target: {fileID: 654394197}
+        m_TargetAssemblyTypeName: MoverObjetosMandoNew, Assembly-CSharp
         m_MethodName: BigR
         m_Mode: 0
         m_Arguments:
@@ -1499,8 +1501,8 @@ MonoBehaviour:
     m_ActionName: User/BigR
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 654394194}
-        m_TargetAssemblyTypeName: MoverObjetosMando, Assembly-CSharp
+      - m_Target: {fileID: 654394197}
+        m_TargetAssemblyTypeName: MoverObjetosMandoNew, Assembly-CSharp
         m_MethodName: SmallR
         m_Mode: 0
         m_Arguments:
@@ -1518,6 +1520,42 @@ MonoBehaviour:
   m_DefaultActionMap: User
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &654394196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654394188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7809c93aeb2cb2241a3ebdd0be4e049d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RecentrarVista
+  camara: {fileID: 323358250}
+  rig: {fileID: 131581278}
+  rotacionObjetivoY: 0
+  alEmpezar: 1
+  teclaRecentrar: 32
+--- !u!114 &654394197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654394188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71e63811b2bfff9489dd702b7a75c624, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MoverObjetosMandoNew
+  objeto: {fileID: 1097043271}
+  direccion: {x: 1, y: 0, z: 0}
+  pasoGrande: 0.1
+  pasoPequeno: 0.01
+  limite: 0
+  permitirAjuste: 1
+  desplazamiento: 0
 --- !u!1 &675236413
 GameObject:
   m_ObjectHideFlags: 0
@@ -1543,7 +1581,7 @@ Transform:
   m_GameObject: {fileID: 675236413}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.11582, z: 1.02438}
+  m_LocalPosition: {x: 0, y: 2.5, z: 1.02438}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1569,7 +1607,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &889719557
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1720,7 +1758,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 79fd8f0238a35f44d9a7498758a4c4af, type: 2}
+  - {fileID: 2100000, guid: 923c5665e3b00b14aa91455cc32fae27, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1934,7 +1972,7 @@ Transform:
   m_GameObject: {fileID: 1002071658}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2222,7 +2260,7 @@ Transform:
   m_GameObject: {fileID: 1196169275}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.75, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2604,7 +2642,7 @@ Transform:
   m_GameObject: {fileID: 1680219185}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2953,7 +2991,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PulfrichController
   pulfrichMaterial: {fileID: -876546973899608171, guid: 5b85e5dcca6b0a44aa9fde1d982ca00a, type: 3}
-  transmitancia: 0.34
+  transmitancia: 0.2
   eye: 0
 --- !u!23 &1859744563
 MeshRenderer:

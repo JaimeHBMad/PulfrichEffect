@@ -1267,6 +1267,10 @@ MonoBehaviour:
   pasoAjusteProfundidad: 0.1
   limiteCompensacion: 2
   permitirAjuste: 1
+  velocidadJoystick: 0.5
+  zonaMuerta: 0.15
+  curvaJoystick: 2
+  invertirJoystick: 0
 --- !u!114 &695848935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1855,6 +1859,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 6837bbf4-d357-424e-95e9-1bf73feac726
     m_ActionName: 'User/Confirmar[/Keyboard/enter]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ed8b2bdb-85ea-4bff-98b5-120e768db590
+    m_ActionName: User/ProfunidadJoystick
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: User
@@ -3012,7 +3020,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PulfrichController
   pulfrichMaterial: {fileID: -876546973899608171, guid: 5b85e5dcca6b0a44aa9fde1d982ca00a, type: 3}
-  transmitancia: 0.684
+  transmitancia: 0.33
   eye: 0
 --- !u!23 &1859744563
 MeshRenderer:

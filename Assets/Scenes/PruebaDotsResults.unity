@@ -161,7 +161,7 @@ Transform:
   m_GameObject: {fileID: 131581276}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -9}
+  m_LocalPosition: {x: 0, y: 0, z: -10.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -639,7 +639,7 @@ Transform:
   m_GameObject: {fileID: 573523763}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.70710677, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.00000011920929, y: 0.5, z: -2}
+  m_LocalPosition: {x: 0.00000022351742, y: 0.5, z: -3.75}
   m_LocalScale: {x: 1, y: 3, z: 6}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1340,6 +1340,10 @@ MonoBehaviour:
   pasoAjusteProfundidad: 0.05
   limiteCompensacion: 2
   permitirAjuste: 1
+  velocidadJoystick: 0.33333334
+  zonaMuerta: 0.1
+  curvaJoystick: 2
+  invertirJoystick: 0
 --- !u!114 &695848935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1375,7 +1379,7 @@ Transform:
   m_GameObject: {fileID: 695848932}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.25, z: -5.5}
+  m_LocalPosition: {x: 0, y: -0.25, z: -7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1490,6 +1494,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 6837bbf4-d357-424e-95e9-1bf73feac726
     m_ActionName: 'User/Confirmar[/Keyboard/enter]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 695848933}
+        m_TargetAssemblyTypeName: PulfrichTrenzaDepthNew, Assembly-CSharp
+        m_MethodName: AjusteJoystick
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ed8b2bdb-85ea-4bff-98b5-120e768db590
+    m_ActionName: User/ProfunidadJoystick
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: User

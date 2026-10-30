@@ -59,6 +59,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ProfunidadJoystick",
+                    "type": "Value",
+                    "id": "ed8b2bdb-85ea-4bff-98b5-120e768db590",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -191,6 +200,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Confirmar",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b76147e5-e669-41b6-bcf4-8d9d0cff2853",
+                    "path": "<XRController>/{TriggerButton}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Confirmar",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c6d0c343-9221-4ec5-87c8-6d8f8374d2d6",
+                    "path": "<XRController>/{Primary2DAxis}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ProfunidadJoystick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

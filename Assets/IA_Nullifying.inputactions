@@ -99,8 +99,30 @@
                 },
                 {
                     "name": "",
+                    "id": "72fec712-1791-4135-8c92-a4ae575a7eb3",
+                    "path": "<VarjoController>{RightHand}/primary",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "nearR",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "ffe7afba-c3f8-4278-a182-2a0247492d08",
                     "path": "<Keyboard>/numpad4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "nearL",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "398af95b-ba85-4d47-a0a9-496863841471",
+                    "path": "<VarjoController>{LeftHand}/primary",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -121,6 +143,17 @@
                 },
                 {
                     "name": "",
+                    "id": "a656c97b-6eca-4516-b169-43e97d3465b2",
+                    "path": "<VarjoController>{LeftHand}/secondary",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "nearLsmall",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "580e8c11-10bd-40f6-859c-c5851b3c0455",
                     "path": "<Keyboard>/numpad3",
                     "interactions": "",
@@ -129,6 +162,31 @@
                     "action": "nearRsmall",
                     "isComposite": false,
                     "isPartOfComposite": false
+<<<<<<< Updated upstream
+=======
+                },
+                {
+                    "name": "",
+                    "id": "c71f637f-e8c6-4711-b9a2-454fb24a8a76",
+                    "path": "<VarjoController>{RightHand}/secondary",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "nearRsmall",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bedb6d53-280c-4264-b5da-52c8c5656ce3",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Confirmar",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+>>>>>>> Stashed changes
                 }
             ]
         }

@@ -159,10 +159,13 @@ public class PruebaPulfrich2AFC_new : MonoBehaviour
             }
 
 
-            //New con tiempo 
+            //New con tiempo
+
+            // Tiempo desde que aparece la trenza hasta que responde (s)
+            float tiempo = Time.time - tInicio;
 
             // Se guarda la compensación que aplicó la trenza de verdad (por si la limitó)
-            GuardarFila(i + 1, trenza.compensacionProfundidad, respuesta);
+            GuardarFila(i + 1, trenza.compensacionProfundidad, respuesta, tiempo);
         }
 
         // Fin: hélice oculta, sin filtro y teclado del experimentador otra vez activo
@@ -213,19 +216,20 @@ public class PruebaPulfrich2AFC_new : MonoBehaviour
         rutaCsv = Path.Combine(carpeta, $"{nombre}_2AFC_{fecha}.csv");
 
         string cabecera = string.Join(SEPARADOR,
-            "ensayo", "densidad_optica", "compensacion", "respuesta");
+            "ensayo", "densidad_optica", "compensacion", "respuesta", "tiempo_s");
 
         // UTF-8 con BOM para que Excel lea bien tildes y eñes
         File.WriteAllText(rutaCsv, cabecera + "\n", Encoding.UTF8);
     }
 
-    private void GuardarFila(int ensayo, float compensacion, int resp)
+    private void GuardarFila(int ensayo, float compensacion, int resp, float tiempo)
     {
         string fila = string.Join(SEPARADOR,
             ensayo.ToString(),
             densidadOptica.ToString(formatoNumeros),
             compensacion.ToString("F4", formatoNumeros),
-            resp.ToString());                            // 1 = front right, 0 = front left
+            resp.ToString(),                             // 1 = front right, 0 = front left
+            tiempo.ToString("F3", formatoNumeros));      // segundos, con 3 decimales (ms)
 
         // Ensayo a ensayo, para no perder datos si algo falla a mitad
         File.AppendAllText(rutaCsv, fila + "\n", Encoding.UTF8);

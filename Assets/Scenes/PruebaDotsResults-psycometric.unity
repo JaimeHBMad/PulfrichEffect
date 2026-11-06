@@ -1838,12 +1838,12 @@ MonoBehaviour:
   - 0.025
   - 0.05
   - 0.1
-  repeticiones: 10
-  totalEnsayos: 70
+  repeticiones: 6
+  totalEnsayos: 42
   aleatorizarOrden: 1
   empezarAlArrancar: 1
   pausaEntreEnsayos: 1
-  idParticipante: MTS
+  idParticipante: MGB
   duracionEstimulo: 4
 --- !u!4 &1098222756
 Transform:

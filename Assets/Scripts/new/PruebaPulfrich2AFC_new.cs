@@ -216,7 +216,7 @@ public class PruebaPulfrich2AFC_new : MonoBehaviour
         rutaCsv = Path.Combine(carpeta, $"{nombre}_2AFC_{fecha}.csv");
 
         string cabecera = string.Join(SEPARADOR,
-            "ensayo", "densidad_optica", "compensacion", "respuesta", "tiempo_s");
+            "ensayo", "densidad_optica", "compensacion", "respuesta", "tiempo_s", "numero_pelotas");
 
         // UTF-8 con BOM para que Excel lea bien tildes y eñes
         File.WriteAllText(rutaCsv, cabecera + "\n", Encoding.UTF8);
@@ -229,7 +229,8 @@ public class PruebaPulfrich2AFC_new : MonoBehaviour
             densidadOptica.ToString(formatoNumeros),
             compensacion.ToString("F4", formatoNumeros),
             resp.ToString(),                             // 1 = front right, 0 = front left
-            tiempo.ToString("F3", formatoNumeros));      // segundos, con 3 decimales (ms)
+            tiempo.ToString("F3", formatoNumeros),      // segundos, con 3 decimales (ms)
+            ensayo == 1 ? trenza.paresDePelotas.ToString() : "");   // nº de pelotas: solo en la primera fila
 
         // Ensayo a ensayo, para no perder datos si algo falla a mitad
         File.AppendAllText(rutaCsv, fila + "\n", Encoding.UTF8);

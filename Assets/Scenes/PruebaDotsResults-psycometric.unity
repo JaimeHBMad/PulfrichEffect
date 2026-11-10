@@ -1838,12 +1838,12 @@ MonoBehaviour:
   - 0.025
   - 0.05
   - 0.1
-  repeticiones: 3
-  totalEnsayos: 21
+  repeticiones: 6
+  totalEnsayos: 42
   aleatorizarOrden: 1
   empezarAlArrancar: 1
   pausaEntreEnsayos: 1
-  idParticipante: JNK
+  idParticipante: MTS
   duracionEstimulo: 4
 --- !u!4 &1098222756
 Transform:

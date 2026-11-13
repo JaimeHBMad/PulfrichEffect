@@ -66,7 +66,7 @@ public class PruebaPulfrich2AFC_new : MonoBehaviour
     // ---------- Arranque ----------
 
     [ContextMenu("Iniciar prueba")]             // opción a los 3 puntos del script en el inspector
-    public void IniciarPrueba()
+    public void IniciarPrueba()         // funcion de control para iniciar la prueba sin entrar a la corrutina, para que no se pueda iniciar dos veces la prueba a la vez
     {
         if (enCurso)
         {
@@ -82,6 +82,8 @@ public class PruebaPulfrich2AFC_new : MonoBehaviour
     }
 
     // ---------- Input (PlayerInput → Invoke Unity Events) ----------
+    // Se enlaza a las acciones del Input System (PlayerInput) para que el usuario pueda responder con el mando o teclado
+    // Estas acciones se escuchan todo el rato, pero solo se guardan si esperandoRespuesta = true, es decir, cuando se esta en un ensayo y se esta esperando la respuesta del usuario
 
     // Enlazar a una acción "FrontLeft" (Button)
     public void FrontLeft(InputAction.CallbackContext ctx)      // Input action (IA), player input, invoke unity events
@@ -96,65 +98,65 @@ public class PruebaPulfrich2AFC_new : MonoBehaviour
     // Enlazar a una acción "FrontRight" (Button)
     public void FrontRight(InputAction.CallbackContext ctx)
     {
-        if (ctx.performed && esperandoRespuesta)            
+        if (ctx.performed && esperandoRespuesta)    //performed = cuando la accion se ha realizado, started = cuando se ha empezado a realizar, canceled = cuando se ha cancelado         
         {
             esperandoRespuesta = false;
             respuesta = 1;
         }
     }
 
-    // Opcional: para que el experimentador lance la prueba
-    public void IniciarPruebaInput(InputAction.CallbackContext ctx)
+    // Para que el experimentador lance la prueba
+    public void IniciarPruebaInput(InputAction.CallbackContext ctx)     // por si se quiere que la prueba no empiece instantaneo
     {
         if (ctx.performed) IniciarPrueba();
     }
 
     // ---------- Desarrollo de la prueba ----------
 
-    private IEnumerator EjecutarPrueba()
+    private IEnumerator EjecutarPrueba()            //corrutina, aka funciones con tiempos controlables
     {
         enCurso = true;
 
-        // Un frame para que el Start() de la trenza haya creado las pelotas
-        yield return null;
+        
+        yield return null;      // Se espera un frame para que se cree la trenza y se pueda acceder a sus pelotas. Si no, da error de null reference
 
-        GenerarEnsayos();
+        GenerarEnsayos();           // crea la lista de ensayos a partir de las compensaciones y repeticiones de forma aleatoria
         if (ensayos.Count == 0)
         {
             Debug.LogError("PruebaPulfrich2AFC: no hay ensayos. Pon al menos una compensación.");
             enCurso = false;
-            yield break;
+            yield break;            // yield break sale de la corrutina, como return pero para corrutinas
         }
 
-        CrearCsv();
+        CrearCsv();                 // se crea el archivo CSV para guardar los datos de la prueba del participante
         controladorFiltro.controlPorTeclado = false;     // nadie toca el filtro durante la prueba
         trenza.permitirAjuste = false;                   // el participante no ajusta, solo responde
-        controladorFiltro.AplicarDensidadOptica(densidadOptica);
+        controladorFiltro.AplicarDensidadOptica(densidadOptica);        // Se aplica la OD en el VDF, R +, L -
 
         Debug.Log($"Prueba 2AFC iniciada: {ensayos.Count} ensayos. Datos en: {rutaCsv}");
 
         for (int i = 0; i < ensayos.Count; i++)
         {
             // 1. Pausa con la hélice oculta
-            trenza.MostrarPelotas(false);
+            trenza.MostrarPelotas(false);       // Se oculta la helice entre repeticiones
             if (pausaEntreEnsayos > 0f)
-                yield return new WaitForSeconds(pausaEntreEnsayos);
+                yield return new WaitForSeconds(pausaEntreEnsayos);     // A los pausaEntreEnsayos segundos se muestra la hélice con la compensación de este ensayo
 
             // 2. Hélice visible con la compensación de este ensayo
-            trenza.EstablecerCompensacion(ensayos[i]);          // Compensacion positiva, resultado = 1 front right
-            trenza.MostrarPelotas(true);
+            trenza.EstablecerCompensacion(ensayos[i]);          // Compensacion positiva, resultado = 1 front right,
+            trenza.MostrarPelotas(true);                    // Aquí es donde se muestran estimulo con la compensacion
 
-            respuesta = -1;
-            esperandoRespuesta = true;
-            Debug.Log($"Ensayo {i + 1}/{ensayos.Count} | compensación {ensayos[i]}");
+            respuesta = -1;                 // variable de control, mientras este en -1 se esta esperando la respuesta del usuario, cuando el user pulse left o right se cambia a 0 o 1 y se guarda la respuesta
+            esperandoRespuesta = true;      // variable de control tmb muy asociada a la respuesta, se pone a false cuando el user responde, para que no se pueda responder mas de una vez por repeticion
+            Debug.Log($"Repetición {i + 1}/{ensayos.Count} | compensación {ensayos[i]}");
 
             // 3. Esperar a que diga left o right --- VERSION 1
             //yield return new WaitUntil(() => respuesta != -1);
             //    Pasada la duración del estímulo la trenza se oculta, pero se sigue esperando la respuesta.
-            float tInicio = Time.time;
-            while (respuesta == -1)
+            float tInicio = Time.time;          // guardamos tiempo de inicio de la repeticion 
+            while (respuesta == -1)             // mientras no haya respondido
             {
-                if (duracionEstimulo > 0f && Time.time - tInicio >= duracionEstimulo)
+                if (duracionEstimulo > 0f && Time.time - tInicio >= duracionEstimulo)   // y si la duracionEstimulo es mayor a 0 y el tiempo que lleva el usuario en la repeticion es mayor a dicho numero, se oculta la trenza
                     trenza.MostrarPelotas(false);
                 yield return null;
             }
@@ -163,7 +165,7 @@ public class PruebaPulfrich2AFC_new : MonoBehaviour
             //New con tiempo
 
             // Tiempo desde que aparece la trenza hasta que responde (s)
-            float tiempo = Time.time - tInicio;
+            float tiempo = Time.time - tInicio;     // guardamos el tiempo que ha tardado el usuario en responder desde que se le muestra la trenza
 
             // Se guarda la compensación que aplicó la trenza de verdad (por si la limitó)
             GuardarFila(i + 1, trenza.compensacionProfundidad, respuesta, tiempo);
@@ -180,18 +182,18 @@ public class PruebaPulfrich2AFC_new : MonoBehaviour
 
     private void GenerarEnsayos()
     {
-        ensayos.Clear();
+        ensayos.Clear();            // se vacia la lista de ensayos anteriores, para que no se acumulen si se vuelve a iniciar la prueba
         if (compensaciones == null) return;
 
-        int reps = Mathf.Max(1, repeticiones);
-        for (int r = 0; r < reps; r++)
+        //int reps = Mathf.Max(1, repeticiones);
+        for (int r = 0; r < repeticiones; r++)              //aqui antes era reps en vez de repeticiones
             foreach (float c in compensaciones)
                 ensayos.Add(c);
 
         if (aleatorizarOrden)
         {
             // Fisher-Yates
-            for (int i = ensayos.Count - 1; i > 0; i--)
+            for (int i = ensayos.Count - 1; i > 0; i--)     // se recorre la lista de ensayos desde el final hasta el principio y se va aleatorizando el orden
             {
                 int j = UnityEngine.Random.Range(0, i + 1);
                 (ensayos[i], ensayos[j]) = (ensayos[j], ensayos[i]);

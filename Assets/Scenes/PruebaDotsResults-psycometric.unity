@@ -1512,8 +1512,8 @@ MonoBehaviour:
     m_ActionName: User/ProfunidadJoystick
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1098222755}
-        m_TargetAssemblyTypeName: PruebaPulfrich2AFC_new, Assembly-CSharp
+      - m_Target: {fileID: 1098222757}
+        m_TargetAssemblyTypeName: PruebaPulfrich2AFC_new_simple, Assembly-CSharp
         m_MethodName: FrontLeft
         m_Mode: 0
         m_Arguments:
@@ -1528,8 +1528,8 @@ MonoBehaviour:
     m_ActionName: 'User/frontL[/Keyboard/leftArrow]'
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1098222755}
-        m_TargetAssemblyTypeName: PruebaPulfrich2AFC_new, Assembly-CSharp
+      - m_Target: {fileID: 1098222757}
+        m_TargetAssemblyTypeName: PruebaPulfrich2AFC_new_simple, Assembly-CSharp
         m_MethodName: FrontRight
         m_Mode: 0
         m_Arguments:
@@ -1808,6 +1808,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1098222756}
   - component: {fileID: 1098222755}
+  - component: {fileID: 1098222757}
   m_Layer: 0
   m_Name: PruebaPulfrich2AFC
   m_TagString: Untagged
@@ -1822,7 +1823,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1098222754}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 36408ef6c52b03041a2f9ae273a2301b, type: 3}
   m_Name: 
@@ -1856,6 +1857,34 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1098222757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1098222754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bccf4efffc89e6d43bc6f00b1521221c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PruebaPulfrich2AFC_new_simple
+  Filtro: {fileID: 1859744565}
+  Estimulo: {fileID: 695848933}
+  compensaciones:
+  - -0.2
+  - -0.1
+  - 0
+  - 0.1
+  - 0.2
+  repeticiones: 1
+  totalEnsayos: 5
+  densidadOptica: 0
+  aleatorizarOrden: 1
+  empezarAlArrancar: 1
+  pausaEntreEnsayos: 1
+  idParticipante: P01
+  duracionEstimulo: 3
 --- !u!1 &1111451949
 GameObject:
   m_ObjectHideFlags: 0

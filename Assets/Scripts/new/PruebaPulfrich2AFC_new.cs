@@ -10,29 +10,29 @@ using UnityEngine.InputSystem;
 /// <summary>
 /// Prueba Pulfrich 2AFC: presenta las compensaciones Z del inspector, cada una
 /// X veces y en orden aleatorio. El participante no ajusta nada, solo responde
-/// si ve la hélice "front left" (0) o "front right" (1).
+/// si ve la hélice "front left" (0) o "front right" (1), pulsando el gatillo correspondiente en el mando.
 /// Cada ensayo se guarda en un CSV.
-/// IMPORTANTE: ponlo en un objeto distinto de la hélice y desactiva PruebaPulfrich.
+/// IMPORTANTE: ponlo en un objeto distinto de la hélice y desactiva PruebaPulfrich.cs
 /// </summary>
 public class PruebaPulfrich2AFC_new : MonoBehaviour
 {
     [Header("Referencias")]
-    public PulfrichControllerNew controladorFiltro;
-    public PulfrichTrenzaDepthNew trenza;
+    public PulfrichControllerNew controladorFiltro;         // Filtro VDF
+    public PulfrichTrenzaDepthNew trenza;                   // Estimulo, helice
 
     [Header("Condiciones (ensayos = compensaciones × repeticiones)")]
     [Tooltip("Densidad óptica CON SIGNO para toda la prueba. Negativa = filtro en ojo izquierdo, positiva = ojo derecho, 0 = sin filtro.")]
-    public float densidadOptica = 0.2f;
+    public float densidadOptica = 0.2f;         // OD del fitler
 
     [Tooltip("Compensaciones Z fijas que se presentan (los 'saltos').")]
-    public float[] compensaciones = { -0.2f, -0.1f, 0f, 0.1f, 0.2f };
+    public float[] compensaciones = { -0.2f, -0.1f, 0f, 0.1f, 0.2f };           // Lista de compensaciones
 
     [Min(1)]
     [Tooltip("Veces que se presenta cada compensación.")]
-    public int repeticiones = 20;
+    public int repeticiones = 20;                               // Veces que se repite cada compensacion
 
     [Tooltip("Solo informativo: se recalcula solo.")]
-    [SerializeField] private int totalEnsayos;
+    [SerializeField] private int totalEnsayos;                  // Solo informativo, se calculo automaticamente: total = comepnsacion * repeticiones
 
     [Header("Desarrollo")]
     public bool aleatorizarOrden = true;
@@ -43,28 +43,29 @@ public class PruebaPulfrich2AFC_new : MonoBehaviour
     public float pausaEntreEnsayos = 1f;
 
     [Header("Registro")]
-    public string idParticipante = "P01";
+    public string idParticipante = "P01";           // id con el que se guardaran los datos en el CSV
     public float duracionEstimulo = 3f;         // duracion = 0, Para que no haya tiempo
     private readonly List<float> ensayos = new List<float>();   // compensación de cada ensayo
-    private bool enCurso;
-    private bool esperandoRespuesta;
-    private int respuesta;          // 1 = front right, 0 = front left, -1 = aún sin responder
+    private bool enCurso;               
+    private bool esperandoRespuesta;        // bool que controla cuando es el tiempo para el usuario responder
+    private int respuesta;          // 1 = front right, 0 = front left, -1 = aún sin responder, ademas de ser variable para la psicometrica es variable de control junto al bool esperandoRespuesta
     private string rutaCsv;
 
-    void OnValidate()
+    void OnValidate()               // permite ver los cambios en el inspector de Unity en tiempo real
     {
-        int nc = compensaciones != null ? compensaciones.Length : 0;
+        //int nc = compensaciones != null ? compensaciones.Length : 0;
+        int nc = compensaciones.Length; // numero de compensaciones
         totalEnsayos = nc * Mathf.Max(1, repeticiones);
     }
 
     void Start()
     {
-        if (empezarAlArrancar) IniciarPrueba();
+        if (empezarAlArrancar) IniciarPrueba();     // sim empezarAlArracnar = true, se inicia la prueba al arrancar el juego
     }
 
     // ---------- Arranque ----------
 
-    [ContextMenu("Iniciar prueba")]
+    [ContextMenu("Iniciar prueba")]             // opción a los 3 puntos del script en el inspector
     public void IniciarPrueba()
     {
         if (enCurso)
@@ -77,25 +78,25 @@ public class PruebaPulfrich2AFC_new : MonoBehaviour
             Debug.LogError("PruebaPulfrich2AFC: asigna el PulfrichControllerNew y la PulfrichTrenzaDepthNew en el inspector.");
             return;
         }
-        StartCoroutine(EjecutarPrueba());
+        StartCoroutine(EjecutarPrueba());           // Empieza la corrutina que ejecuta la prueba que depende del tiempo
     }
 
     // ---------- Input (PlayerInput → Invoke Unity Events) ----------
 
     // Enlazar a una acción "FrontLeft" (Button)
-    public void FrontLeft(InputAction.CallbackContext ctx)
+    public void FrontLeft(InputAction.CallbackContext ctx)      // Input action (IA), player input, invoke unity events
     {
-        if (ctx.performed && esperandoRespuesta)
+        if (ctx.performed && esperandoRespuesta)    // esperandoRespuesta = true, se esta esperando la respuesta del user
         {
-            esperandoRespuesta = false;
-            respuesta = 0;
+            esperandoRespuesta = false;         // ya se ha guardado una respuesta, asi solo se guarda lo primero que pulse el user
+            respuesta = 0;                      // elección para la función psicométrica
         }
     }
 
     // Enlazar a una acción "FrontRight" (Button)
     public void FrontRight(InputAction.CallbackContext ctx)
     {
-        if (ctx.performed && esperandoRespuesta)
+        if (ctx.performed && esperandoRespuesta)            
         {
             esperandoRespuesta = false;
             respuesta = 1;

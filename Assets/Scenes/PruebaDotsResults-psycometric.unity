@@ -1330,8 +1330,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8add6a146b39b444a81e25927e5d07d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PulfrichTrenzaDepthNew
-  prefabPelota: {fileID: 4022179365186456874, guid: 4f8e0c0a1631e214c87dc651dc799457, type: 3}
-  paresDePelotas: 1
+  prefabPelota: {fileID: 8640998342490877455, guid: 2a821555f52abf241842051594b0be02, type: 3}
+  paresDePelotas: 50
   alturaColumna: 5
   amplitudOnda: 0.5
   frecuenciaOnda: 2
@@ -1379,7 +1379,7 @@ Transform:
   m_GameObject: {fileID: 695848932}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.33, z: -7}
+  m_LocalPosition: {x: 0, y: 0, z: -7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1831,19 +1831,15 @@ MonoBehaviour:
   trenza: {fileID: 695848933}
   densidadOptica: 0
   compensaciones:
-  - -0.1
-  - -0.05
-  - -0.025
+  - -0.4
   - 0
-  - 0.025
-  - 0.05
-  - 0.1
-  repeticiones: 6
-  totalEnsayos: 42
+  - 0.4
+  repeticiones: 2
+  totalEnsayos: 6
   aleatorizarOrden: 1
   empezarAlArrancar: 1
   pausaEntreEnsayos: 1
-  idParticipante: MTS
+  idParticipante: JNK
   duracionEstimulo: 4
 --- !u!4 &1098222756
 Transform:

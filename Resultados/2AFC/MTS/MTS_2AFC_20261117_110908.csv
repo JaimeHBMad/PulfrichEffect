@@ -1,0 +1,6 @@
+﻿ensayo;densidad_optica;compensacion;respuesta;tiempo_s;prefab;pares_pelotas;altura_estimulo;amplitud_onda;frecuencia_onda;velocidad_onda
+1;0,2;-0,2000;0;2,514;Dot;50;5;0,5;2;4;3
+2;0,2;0,1000;1;1,680;;;;;;;
+3;0,2;0,0000;1;2,280;;;;;;;
+4;0,2;0,2000;1;2,292;;;;;;;
+5;0,2;-0,1000;0;2,184;;;;;;;

@@ -40,6 +40,19 @@ public class PruebaPulfrich2AFC_new_simple : MonoBehaviour
     [Header("Registro")]
     public string idParticipante = "P01";           // id con el que se guardaran los datos en el CSV
     public float duracionEstimulo = 3f;         // duracion = 0, Para que no haya tiempo
+
+    [Header("Sonidos")]
+    [Tooltip("Suena cuando el participante responde (front left o front right). Vacío = sin sonido.")]
+    public AudioClip sonidoRespuesta;
+    [Tooltip("Suena cuando la hélice desaparece al agotarse duracionEstimulo. Vacío = sin sonido.")]
+    public AudioClip sonidoDesaparece;
+    [Tooltip("Suena al terminar la prueba. Vacío = sin sonido.")]
+    public AudioClip sonidoFin;
+
+    [Range(0f, 1f)] public float volumenSonidos = 1f;
+    [Tooltip("Opcional. Si se deja vacío, se usa el AudioSource de este objeto o se crea uno 2D.")]
+    public AudioSource fuenteAudio;
+
     private readonly List<float> ensayos = new List<float>();   // compensación de cada ensayo
     private bool enCurso;               
     private bool esperandoRespuesta;        // bool que controla cuando es el tiempo para el usuario responder
@@ -50,6 +63,21 @@ public class PruebaPulfrich2AFC_new_simple : MonoBehaviour
     {
         int nc = compensaciones.Length; // numero de compensaciones
         totalEnsayos = nc * repeticiones;
+    }
+
+    void Awake()
+    {
+        // Si no se ha puesto un AudioSource en el inspector, se usa el de este objeto o se crea uno
+        if (fuenteAudio == null)
+        {
+            fuenteAudio = GetComponent<AudioSource>();
+            if (fuenteAudio == null)
+            {
+                fuenteAudio = gameObject.AddComponent<AudioSource>();
+                fuenteAudio.playOnAwake = false;
+                fuenteAudio.spatialBlend = 0f;      // 2D: suena igual esté donde esté este objeto en la escena
+            }
+        }
     }
 
     void Start()
@@ -78,6 +106,7 @@ public class PruebaPulfrich2AFC_new_simple : MonoBehaviour
         {
             esperandoRespuesta = false;         // ya se ha guardado una respuesta, asi solo se guarda lo primero que pulse el user
             respuesta = 0;                      // elección para la función psicométrica
+            Reproducir(sonidoRespuesta);
         }
     }
 
@@ -88,6 +117,7 @@ public class PruebaPulfrich2AFC_new_simple : MonoBehaviour
         {
             esperandoRespuesta = false;
             respuesta = 1;
+            Reproducir(sonidoRespuesta);
         }
     }
 
@@ -134,12 +164,27 @@ public class PruebaPulfrich2AFC_new_simple : MonoBehaviour
             Debug.Log($"Repetición {i + 1}/{ensayos.Count} | compensación {ensayos[i]}");
 
             float tInicio = Time.time;          // guardamos tiempo de inicio de la repeticion 
-            while (respuesta == -1)             // mientras no haya respondido
+                                                //while (respuesta == -1)             // mientras no haya respondido
+                                                //{
+                                                //    if (duracionEstimulo > 0f && Time.time - tInicio >= duracionEstimulo)   // y si la duracionEstimulo es mayor a 0 y el tiempo que lleva el usuario en la repeticion es mayor a dicho numero, se oculta la trenza
+                                                //        Estimulo.MostrarPelotas(false);
+                                                //    yield return null;                      
+                                                //}
+
+            // Fase 1: hélice visible. Se espera a que responda o a que se acabe el tiempo
+            while (respuesta == -1 && (duracionEstimulo <= 0f || Time.time - tInicio < duracionEstimulo))
+                yield return null;
+
+            // Fase 2: si se ha acabado el tiempo sin responder, se oculta y suena (una sola vez)
+            if (respuesta == -1)
             {
-                if (duracionEstimulo > 0f && Time.time - tInicio >= duracionEstimulo)   // y si la duracionEstimulo es mayor a 0 y el tiempo que lleva el usuario en la repeticion es mayor a dicho numero, se oculta la trenza
-                    Estimulo.MostrarPelotas(false);
-                yield return null;                      
+                Estimulo.MostrarPelotas(false);
+                Reproducir(sonidoDesaparece);
+
+                while (respuesta == -1)     // se sigue esperando la respuesta con la hélice ya oculta
+                    yield return null;
             }
+
             float tiempo = Time.time - tInicio;     // guardamos el tiempo que ha tardado el usuario en responder desde que se le muestra la trenza
 
             // Se guarda la compensación que aplicó la trenza de verdad (por si la limitó)
@@ -148,6 +193,10 @@ public class PruebaPulfrich2AFC_new_simple : MonoBehaviour
 
         // Fin de la prueba
         Estimulo.MostrarPelotas(false);             // se oculta la trenza al final de la prueba
+        if (pausaEntreEnsayos > 0f)
+            yield return new WaitForSeconds(pausaEntreEnsayos);   // para que no se solape con el sonido de la última respuesta
+        Reproducir(sonidoFin);
+
         Filtro.AplicarDensidadOptica(0f);           // se aplica densidad neutra
         Filtro.controlPorTeclado = true;            // se vuelve a permitir al experimentador controlar el filtro con el teclado
         enCurso = false;                            // ya no esta enCurso
@@ -173,6 +222,7 @@ public class PruebaPulfrich2AFC_new_simple : MonoBehaviour
         }
     }
 
+
     // ---------- CSV ----------
 
     // Formato de Excel en español: columnas separadas por ";" y decimales con ","
@@ -191,7 +241,7 @@ public class PruebaPulfrich2AFC_new_simple : MonoBehaviour
         rutaCsv = Path.Combine(carpeta, $"{nombre}_2AFC_{fecha}.csv");
 
         string cabecera = string.Join(SEPARADOR,
-            "ensayo", "densidad_optica", "compensacion", "respuesta", "tiempo_s", "prefab", "pares_pelotas", "altura_estimulo", "amplitud_onda", "frecuencia_onda", "velocidad_onda");
+            "ensayo", "densidad_optica", "compensacion", "respuesta", "tiempo_s", "prefab", "pares_pelotas", "altura_estimulo", "amplitud_onda", "frecuencia_onda", "velocidad_onda", "tiempo_estimulo");
 
         // UTF-8 con BOM para que Excel lea bien tildes y eñes
         File.WriteAllText(rutaCsv, cabecera + "\n", Encoding.UTF8);
@@ -211,7 +261,9 @@ public class PruebaPulfrich2AFC_new_simple : MonoBehaviour
             primeraFila ? Estimulo.alturaColumna.ToString() : "",
             primeraFila ? Estimulo.amplitudOnda.ToString() : "",
             primeraFila ? Estimulo.frecuenciaOnda.ToString() : "",
+            primeraFila ? duracionEstimulo.ToString(formatoNumeros) : "",
             primeraFila ? Estimulo.velocidadOnda.ToString() : "");
+
 
         // Repeticion a repetición, para no perder datos si algo falla a mitad
         File.AppendAllText(rutaCsv, fila + "\n", Encoding.UTF8);
@@ -231,7 +283,6 @@ public class PruebaPulfrich2AFC_new_simple : MonoBehaviour
         return Path.Combine(raiz, "Resultados");
     }
 
-    // Quita caracteres que no se pueden usar en nombres de carpeta (/, :, *, ?...)
     private static string NombreCarpetaSeguro(string nombre)
     {
         if (string.IsNullOrWhiteSpace(nombre)) return "SinNombre";
@@ -241,4 +292,12 @@ public class PruebaPulfrich2AFC_new_simple : MonoBehaviour
 
         return nombre.Trim();
     }
+
+    // PlayOneShot no corta un sonido que ya esté sonando, así que los dos clips pueden solaparse
+    private void Reproducir(AudioClip clip)
+    {
+        if (clip == null || fuenteAudio == null) return;    // sin clip en el inspector = sin sonido
+        fuenteAudio.PlayOneShot(clip, volumenSonidos);
+    }
+
 }

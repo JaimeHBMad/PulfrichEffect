@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 103821333}
   - component: {fileID: 103821332}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Punto de fijacion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -184,7 +184,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 80a0b8a248d85434da0d319f0e002f82, type: 2}
+  - {fileID: 2100000, guid: 16f4634d828a44f45847c444bd99ffa2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1443,8 +1443,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PulfrichTrenzaDepthNew
   prefabPelota: {fileID: 8640998342490877455, guid: 2a821555f52abf241842051594b0be02, type: 3}
-  paresDePelotas: 50
-  alturaColumna: 5
+  paresDePelotas: 25
+  alturaColumna: 3
   amplitudOnda: 0.5
   frecuenciaOnda: 2
   velocidadOnda: 3
@@ -2095,11 +2095,11 @@ MonoBehaviour:
   - 0.1
   repeticiones: 6
   totalEnsayos: 42
-  densidadOptica: -0.15
+  densidadOptica: 0
   aleatorizarOrden: 1
   empezarAlArrancar: 1
   pausaEntreEnsayos: 1
-  idParticipante: JNK
+  idParticipante: LRM
   duracionEstimulo: 4
   sonidoRespuesta: {fileID: 8300000, guid: 11fee4bda56ca344592e577dc6512378, type: 3}
   sonidoDesaparece: {fileID: 0}

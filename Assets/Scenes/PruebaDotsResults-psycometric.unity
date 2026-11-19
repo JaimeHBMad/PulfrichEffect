@@ -1447,7 +1447,7 @@ MonoBehaviour:
   alturaColumna: 3
   amplitudOnda: 0.5
   frecuenciaOnda: 2
-  velocidadOnda: 3
+  velocidadOnda: 3.1415927
   compensacionProfundidad: 0
   pasoAjusteProfundidad: 0.05
   limiteCompensacion: 2
@@ -2099,7 +2099,7 @@ MonoBehaviour:
   aleatorizarOrden: 1
   empezarAlArrancar: 1
   pausaEntreEnsayos: 1
-  idParticipante: LRM
+  idParticipante: ASC
   duracionEstimulo: 4
   sonidoRespuesta: {fileID: 8300000, guid: 11fee4bda56ca344592e577dc6512378, type: 3}
   sonidoDesaparece: {fileID: 0}
